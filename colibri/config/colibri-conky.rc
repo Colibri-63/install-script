@@ -1,0 +1,43 @@
+conky.config = {
+    alignment = 'top_right',
+    --background = false,
+    use_xft = true,
+    font = 'SemiCasual Regular:30',
+    xftalpha = 1,
+    cpu_avg_samples = 2,
+    default_color = 'black',
+    default_outline_color = 'black',
+    default_shade_color = 'white',
+    double_buffer = true,
+    draw_borders = false,
+    draw_graph_borders = true,
+    draw_outline = false,
+    draw_shades = false,
+    gap_x = 12,
+    gap_y = 35,
+    minimum_height = 5,
+    minimum_width = 5,
+    net_avg_samples = 2,
+    no_buffers = true,
+    out_to_console = false,
+    out_to_stderr = false,
+    extra_newline = false,
+    own_window = true,
+    own_window_type = 'desktop',
+    own_window_argb_visual = true,
+    own_window_transparent = true,
+    -- own_window_colour = 'ffffff',
+    stippled_borders = 0,
+    update_interval = 1.0,
+    uppercase = false,
+    use_spacer = 'none',
+    show_graph_scale = false,
+    show_graph_range = false
+}
+
+
+
+conky.text = [[
+${color #3d1001}${font Semi\-Casual:style=Regular:size=25}Mot de passe utilisateur:
+${font Semi\-Casual:style=Bold:size=35}colibri
+]]

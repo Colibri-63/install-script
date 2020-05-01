@@ -1,0 +1,35 @@
+[Desktop Entry]
+X-SnapInstanceName=chromium
+Version=1.0
+Name=Chromium Web Browser
+Name[fr]=Navigateur Web Chrome - Scratch ONLINE
+GenericName=Web Browser
+GenericName[fr]=Raccourci vers Scratch
+Comment=Scratch ONLINE
+Comment[fr]=Scratch ONLINE
+Exec=env BAMF_DESKTOP_FILE_HINT=/var/lib/snapd/desktop/applications/chromium_chromium.desktop /snap/bin/chromium https://scratch.mit.edu/
+Terminal=false
+Type=Application
+Icon=/etc/colibri/artwork/scratch.png
+Categories=Network;WebBrowser;
+MimeType=text/html;text/xml;application/xhtml_xml;x-scheme-handler/http;x-scheme-handler/https;
+StartupNotify=true
+StartupWMClass=chromium
+Actions=NewWindow;Incognito;TempProfile;
+Name[fr_FR]=Scratch ONLINE
+GenericName[fr_FR.UTF-8]=ENT link
+
+[Desktop Action NewWindow]
+Name=Open a New Window
+Name[fr]=Ouvrir une nouvelle fenêtre
+Exec=env BAMF_DESKTOP_FILE_HINT=/var/lib/snapd/desktop/applications/chromium_chromium.desktop /snap/bin/chromium
+
+[Desktop Action Incognito]
+Name=Open a New Window in incognito mode
+Name[fr]=Ouvrir une nouvelle fenêtre en mode navigation privée
+Exec=env BAMF_DESKTOP_FILE_HINT=/var/lib/snapd/desktop/applications/chromium_chromium.desktop /snap/bin/chromium --incognito
+
+[Desktop Action TempProfile]
+Name=Open a New Window with a temporary profile
+Name[fr]=Ouvrir une nouvelle fenêtre avec un profil temporaire
+Exec=env BAMF_DESKTOP_FILE_HINT=/var/lib/snapd/desktop/applications/chromium_chromium.desktop /snap/bin/chromium --temp-profile
