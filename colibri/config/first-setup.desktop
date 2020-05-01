@@ -1,0 +1,4 @@
+[Desktop Entry]
+Name=Initial desktop setup
+Exec=/etc/colibri/script/first-startup.sh
+Type=Application

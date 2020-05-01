@@ -1,2 +1,0 @@
-#!/usr/bin/sh
-echo "Colibri@63" | gnome-keyring-daemon --unlock

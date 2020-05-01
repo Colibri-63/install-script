@@ -81,6 +81,10 @@ cp -v $scriptSourceBasePath/config/*.desktop /home/colibri/.config/autostart/
 chown -v -R colibri /home/colibri;
 chmod -v +x /home/colibri/Bureau/*.desktop
 
+## copying wallpaper
+
+cp colibri/artwork/colibri-wallpaper.png /usr/share/backgrounds/warty-final-ubuntu.png
+
 ## create a marker for first connection
 touch /home/colibri/.need-desktop-setup
 chown colibri /home/colibri/.need-desktop-setup
