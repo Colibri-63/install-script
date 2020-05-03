@@ -29,7 +29,7 @@ Ce script n'étant donc pas testé sur la version 20.04 LTS, pour le moment nous
 
 :warning:
 ***Lors de l'installation, il vous sera demandé de choisir un utilisateur et un mot de passe. 
-Il est INDISPENSABLE que cette utilisateur que cet utilisateur soit appelé :***
+Il est INDISPENSABLE que cette utilisateur soit appelé :***
 ```
 colibriadmin
 ```
