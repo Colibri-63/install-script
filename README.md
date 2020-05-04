@@ -52,7 +52,7 @@ Si tout c'est bien passé, vous devriez avoir une console devant vous
 
 
 4. Pleins de messages vont s'afficher dans le terminal. Quand tout sera terminé (cela prend plus ou moins de temps car le logiciel est téléchargé depuis le réseaux). Quand la commande précédente est terminé vous devriez revoir le signe **$** s'afficher.
-    - Tapez maintenant la commande suivante `git clone https://githib.com/Colibri-63/install-script`. Là encore vous allez voir des informations s'afficher sur votre teminal.
+    - Tapez maintenant la commande suivante `git clone https://github.com/Colibri-63/install-script`. Là encore vous allez voir des informations s'afficher sur votre teminal.
     - Quand vous revoyez de nouveau notre **$** s'afficher. C'est OK. On passe à l'étape suivante.
 
 
