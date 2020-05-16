@@ -8,6 +8,7 @@ if [ -f "$NEED_SETUP" ]; then
 	gio set "/home/colibri/Bureau/Sctratch Online.desktop" "metadata::trusted" "true"
 	gio set "/home/colibri/Bureau/chrome.desktop" "metadata::trusted" "true"
 	gio set "/home/colibri/Bureau/ENT Auvergne.desktop" "metadata::trusted" "true"
+	gio set "/home/colibri/.config/autostart/conky-autostart.desktop" "metadata::trusted" "true"
 	gsettings set org.gnome.desktop.lockdown disable-lock-screen 'true'
 	rm $NEED_SETUP
 else
