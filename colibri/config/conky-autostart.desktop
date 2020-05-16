@@ -1,4 +1,4 @@
 [Desktop Entry]
 Name=Autostart conky
-Exec=conky -c $HOME/.config/conky/colibri-conky.rc &
+Exec=conky -c /home/colibri/.config/conky/colibri-conky.rc &
 Type=Application
