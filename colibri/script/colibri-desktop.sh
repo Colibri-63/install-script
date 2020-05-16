@@ -20,6 +20,8 @@ fi
 wget -qO - https://keys.anydesk.com/repos/DEB-GPG-KEY | apt-key add -;
 echo "deb http://deb.anydesk.com/ all main" > /etc/apt/sources.list.d/anydesk-stable.list;
 apt-get update -y;
+apt-get upgrade -y;
+apt-get dist-upgrade -y;
 apt-get -y install ffmpeg shotwell aptitude \
 exfat-fuse exfat-utils conky git anydesk yad;
 snap install gimp chromium chromium-ffmpeg vlc inkscape audacity;
@@ -102,18 +104,18 @@ mv tmp.tmp /etc/gdm3/custom.conf;
 ## reboot
 yad --borders=50 --center \
 --title "Redémarrage ?" \
---text "Le système va redémarrer dans 10 secondes.\nVoulez-vous vraiment redémarrer maintenant ?" \
+--text "Le système va redémarrer dans 10 secondes.\nVoulez-vous redémarrer plus tard ?" \
 --timeout="10" \
 --timeout-indicator=bottom
 
 if [ $? = 0 ]
 then
+	yad --title="CIOA!!!" --width="400" --no-buttons --borders=50 --text-align="center" --center --text "<span font_desc='Ubuntu Bold' foreground='#000000'>OK</span>" --timeout 2
+	exit 0;	
+else
 	yad --title="REBOOTING" --width="400" --text-align="center" --no-buttons --borders=50 --center --text "<span font_desc='Ubuntu Bold' foreground='#000000'>REBOOTING...</span>" --timeout 2;
 	reboot;
-	
-else
-	yad --title="CIOA!!!" --width="400" --no-buttons --borders=50 --text-align="center" --center --text "<span font_desc='Ubuntu Bold' foreground='#000000'>OK</span>" --timeout 2
-	exit 0;
+
 fi
     
 
