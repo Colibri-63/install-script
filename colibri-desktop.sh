@@ -71,11 +71,11 @@ mkdir -v -p /home/colibri/.config/autostart/
 cp -v $scriptSourceBasePath/desktop/*.desktop /home/colibri/Bureau/
 
 ## setting up conky
-cp -v $scriptSourceBasePath/config/*.rc /home/colibri/.config/
+cp -v $scriptSourceBasePath/config/*.rc /home/colibri/.config/conky
 
 ## setting up autostart script
-
 cp -v $scriptSourceBasePath/config/*.desktop /home/colibri/.config/autostart/
+chmod -v +x /home/colibri/.config/autostart/*.desktop
 
 # setting up autorisations
 chown -v -R colibri /home/colibri;
@@ -83,7 +83,7 @@ chmod -v +x /home/colibri/Bureau/*.desktop
 
 ## copying wallpaper
 
-cp colibri/artwork/colibri-wallpaper.png /usr/share/backgrounds/warty-final-ubuntu.png
+cp /etc/colibri/artwork/colibri-wallpaper.png /usr/share/backgrounds/warty-final-ubuntu.png
 
 ## create a marker for first connection
 touch /home/colibri/.need-desktop-setup
