@@ -20,6 +20,8 @@ fi
 wget -qO - https://keys.anydesk.com/repos/DEB-GPG-KEY | apt-key add -;
 echo "deb http://deb.anydesk.com/ all main" > /etc/apt/sources.list.d/anydesk-stable.list;
 apt-get update -y;
+apt-get upgrade -y;
+apt-get dist-upgrade -y;
 apt-get -y install ffmpeg shotwell aptitude \
 exfat-fuse exfat-utils conky git anydesk yad;
 snap install gimp chromium chromium-ffmpeg vlc inkscape audacity;
