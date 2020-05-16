@@ -104,18 +104,18 @@ mv tmp.tmp /etc/gdm3/custom.conf;
 ## reboot
 yad --borders=50 --center \
 --title "Redémarrage ?" \
---text "Le système va redémarrer dans 10 secondes.\nVoulez-vous vraiment redémarrer maintenant ?" \
+--text "Le système va redémarrer dans 10 secondes.\nVoulez-vous redémarrer plus tard ?" \
 --timeout="10" \
 --timeout-indicator=bottom
 
 if [ $? = 0 ]
 then
+	yad --title="CIOA!!!" --width="400" --no-buttons --borders=50 --text-align="center" --center --text "<span font_desc='Ubuntu Bold' foreground='#000000'>OK</span>" --timeout 2
+	exit 0;	
+else
 	yad --title="REBOOTING" --width="400" --text-align="center" --no-buttons --borders=50 --center --text "<span font_desc='Ubuntu Bold' foreground='#000000'>REBOOTING...</span>" --timeout 2;
 	reboot;
-	
-else
-	yad --title="CIOA!!!" --width="400" --no-buttons --borders=50 --text-align="center" --center --text "<span font_desc='Ubuntu Bold' foreground='#000000'>OK</span>" --timeout 2
-	exit 0;
+
 fi
     
 
