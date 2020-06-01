@@ -3,7 +3,7 @@
 ## Setting up script path
 execPath=$(readlink -f $(dirname $0))
 scriptSourceBasePath=$execPath/colibri/
-echo $scriptSourceBasePath
+#DEBUG# echo $scriptSourceBasePath
 sleep 5
 ## check if user has root privileges or exit
 
@@ -15,6 +15,30 @@ if [ $(whoami) != "root" ] ; then
     exit 0;
 fi
 
+## check if we are on mate or on Ubuntu
+Ubuntu_version="Ubuntu_Default"
+if ls /usr/bin/*session | grep -q 'mate'; then
+    ### setting up env for MATE
+    Ubuntu_version="Ubuntu_Mate"
+    AUTOLOGIN_FILE="/etc/lightdm/lightdm.conf"
+    AUTOLOGIN_BACKUP="/etc/lightdm/lightdm.conf.backup"
+    DESKTOP_WALLPAPER_DEST="/usr/share/backgrounds/ubuntu-mate-common/Green-Wall-Logo.png"
+
+else
+    ### setting up env for Ubuntu standard
+    AUTOLOGIN_FILE="/etc/gdm3/custom.conf"
+    AUTOLOGIN_BACKUP="/etc/gdm3/custom.conf.backup"
+    DESKTOP_WALLPAPER_DEST="/usr/share/backgrounds/warty-final-ubuntu.png"
+fi
+
+
+##DEBUG##
+echo $Ubuntu_version
+echo $AUTOLOGIN_FILE
+echo $AUTOLOGIN_BACKUP
+echo $DESKTOP_WALLPAPER_DEST
+##END DEBUG##
+
 ## check colibri user configuration
 ## update and install needed softwares
 wget -qO - https://keys.anydesk.com/repos/DEB-GPG-KEY | apt-key add -;
@@ -24,7 +48,12 @@ apt-get upgrade -y;
 apt-get dist-upgrade -y;
 apt-get -y install ffmpeg shotwell aptitude \
 exfat-fuse exfat-utils conky git anydesk yad;
-snap install gimp chromium chromium-ffmpeg vlc inkscape audacity;
+snap install gimp; 
+snap install chromium; 
+snap install chromium-ffmpeg; 
+snap install vlc;
+snap install inkscape; 
+snap install audacity;
 snap install --classic skype;
 
 ## creating a new group for autologin
@@ -85,21 +114,32 @@ chmod -v +x /home/colibri/Bureau/*.desktop
 
 ## copying wallpaper
 
-cp /etc/colibri/artwork/colibri-wallpaper.png /usr/share/backgrounds/warty-final-ubuntu.png
+cp -v /etc/colibri/artwork/colibri-wallpaper.png $DESKTOP_WALLPAPER_DEST
 
 ## create a marker for first connection
 touch /home/colibri/.need-desktop-setup
 chown colibri /home/colibri/.need-desktop-setup
 
-### autologin
-cat /etc/gdm3/custom.conf | \
-	sed -e 's/#[[:space:]]*AutomaticLoginEnable/AutomaticLoginEnable/g' | \
-	sed -e 's/#*[[:space:]]*AutomaticLogin[[:space:]]*=/AutomaticLogin = colibri@/g' | \
-	cut -d "@" -f1 >> tmp.tmp ;
+## setting up autologin for colibri
+### autologin Ubuntu standard
+if [ "$Ubuntu_version" = "Ubuntu_Mate" ]; then
+    echo "MATE autologin handle"    
+    ### autologin Ubuntu Mate
+    cat $AUTOLOGIN_FILE | \
+    	sed -e 's/#*[[:space:]]*autologin-user=/autologin-user=colibri@/g' | \
+    	cut -d "@" -f1 >> tmp.tmp ;
+else
+    echo "GDM autologin handle"
+    ### autologin Ubuntu Standard
+    cat $AUTOLOGIN_FILE | \
+    	sed -e 's/#[[:space:]]*AutomaticLoginEnable/AutomaticLoginEnable/g' | \
+    	sed -e 's/#*[[:space:]]*AutomaticLogin[[:space:]]*=/AutomaticLogin = colibri@/g' | \
+    	cut -d "@" -f1 >> tmp.tmp;
+fi
 
-mv /etc/gdm3/custom.conf /etc/colibri/gdm3custom.conf.backup;
+mv $AUTOLOGIN_FILE $AUTOLOGIN_BACKUP;
 
-mv tmp.tmp /etc/gdm3/custom.conf;
+mv tmp.tmp $AUTOLOGIN_FILE;
 
 ## reboot
 yad --borders=50 --center \
